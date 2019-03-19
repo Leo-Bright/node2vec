@@ -94,10 +94,17 @@ def main(args):
 	Pipeline for representational learning for all nodes in a graph.
 	'''
 	nx_G = read_graph()
+	print 'read graph done'
 	G = node2vec.Graph(nx_G, args.directed, args.p, args.q)
 	G.preprocess_transition_probs()
+	print 'preprocess transition done'
 	walks = G.simulate_walks(args.num_walks, args.walk_length)
-	learn_embeddings(walks)
+	print 'walk done!'
+	with open('walks/sanfrancisco_random_node2vec_wn10_wl1280.walk') as output:
+		for walk in walks:
+			output.write('%s\n', ' 0 '.join(map(str, walk)))
+	#learn_embeddings(walks)
+	print 'walks saved without learn embeddings!'
 
 if __name__ == "__main__":
 	args = parse_args()
