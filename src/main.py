@@ -27,6 +27,9 @@ def parse_args():
 	parser.add_argument('--output', nargs='?', default='emb/karate.emb',
 	                    help='Embeddings path')
 
+	parser.add_argument('--output-walks', nargs='?', default='walks/karate.walk',
+	                    help='walks output file path')
+
 	parser.add_argument('--dimensions', type=int, default=128,
 	                    help='Number of dimensions. Default is 128.')
 
@@ -100,7 +103,9 @@ def main(args):
 	print 'preprocess transition done'
 	walks = G.simulate_walks(args.num_walks, args.walk_length)
 	print 'walk done!'
-	with open('walks/sanfrancisco_random_node2vec_wn10_wl1280.walk', 'w+') as output:
+	output_path = args.output_walks
+	print 'output path is :'+output_path
+	with open(output_path, 'w+') as output:
 		for walk in walks:
 			output.write('%s\n', ' 0 '.join(map(str, walk)))
 	#learn_embeddings(walks)
