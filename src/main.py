@@ -100,7 +100,7 @@ def main(args):
 	print 'preprocess transition done'
 	walks = G.simulate_walks(args.num_walks, args.walk_length)
 	print 'walk done!'
-	with open('walks/sanfrancisco_random_node2vec_wn10_wl1280.walk') as output:
+	with open('walks/sanfrancisco_random_node2vec_wn10_wl1280.walk', 'w+') as output:
 		for walk in walks:
 			output.write('%s\n', ' 0 '.join(map(str, walk)))
 	#learn_embeddings(walks)
