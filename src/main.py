@@ -110,7 +110,7 @@ def main(args):
 
 	with open(output_path, 'w+') as output:
 		for walk in walks:
-			output.write('%s\n', ' 0 '.join(map(str, walk)))
+			output.write('%s\n' % ' 0 '.join(map(str, walk)))
 	#learn_embeddings(walks)
 	print 'walks saved without learn embeddings!'
 
