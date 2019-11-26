@@ -117,6 +117,7 @@ def main(args):
 		for line in input:
 			walks.append(line.strip().split(' ')[::2])
 
+	print 'learning...'
 	learn_embeddings(walks)
 	print 'walks saved without learn embeddings!'
 
